@@ -1,0 +1,37 @@
+SELECT DISTINCT year FROM population_years;
+
+SELECT MAX(population_years.population)
+FROM countries 
+JOIN population_years 
+   ON countries.id = population_years.country_id 
+WHERE countries.name = 'Gabon';
+
+SELECT countries.name,
+  population_years.population 
+FROM countries 
+JOIN population_years 
+  ON countries.id = population_years.country_id 
+WHERE year = 2005 
+ORDER BY 2 ASC 
+LIMIT 10;
+
+SELECT countries.name, 
+  population_years.population 
+FROM countries 
+JOIN population_years 
+  ON countries.id = population_years.country_id 
+ WHERE population_years.population > 100 
+  AND year = 2010 
+ ORDER BY 2 DESC;
+ 
+ SELECT COUNT(*) FROM countries WHERE name LIKE '%%Islands%';
+
+SELECT population_years.population 
+FROM countries JOIN population_years 
+  ON countries.id = population_years.country_id 
+WHERE countries.name = 'Indonesia' AND year = 2000 OR 2010;
+
+SELECT population_years.population
+FROM countries JOIN population_years
+ ON countries.id = population_years.country_id
+WHERE countries.name = 'Indonesia' AND year = 2000 OR countries.name = 'Indonesia' AND year = 2010;
